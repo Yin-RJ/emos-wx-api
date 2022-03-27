@@ -1,11 +1,11 @@
 package com.yinrj.emoswxapi.controller;
 
 import com.yinrj.emoswxapi.common.response.Result;
+import com.yinrj.emoswxapi.entity.dto.TestSayHelloDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author yinrongjie
@@ -21,5 +21,11 @@ public class TestSwaggerController {
     @ApiOperation("测试方法")
     public Result sayHello() {
         return Result.ok().put("message", "HelloWorld");
+    }
+
+    @PostMapping("/say_sb_hello")
+    @ApiOperation("带有参数的测试方法")
+    public Result sayHello2Person(@Validated @RequestBody TestSayHelloDTO helloDTO) {
+        return Result.ok().put("message", "Hello, " + helloDTO.getName());
     }
 }
