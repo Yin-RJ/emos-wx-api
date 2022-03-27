@@ -28,4 +28,10 @@ public class TestSwaggerController {
     public Result sayHello2Person(@Validated @RequestBody TestSayHelloDTO helloDTO) {
         return Result.ok().put("message", "Hello, " + helloDTO.getName());
     }
+
+    @GetMapping("/name")
+    @ApiOperation("测试抵御xss脚本攻击")
+    public Result xssInput(@RequestParam("name") String name) {
+        return Result.ok().put("content", "hello, " + name);
+    }
 }
