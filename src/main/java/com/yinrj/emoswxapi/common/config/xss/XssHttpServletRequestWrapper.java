@@ -2,7 +2,6 @@ package com.yinrj.emoswxapi.common.config.xss;
 
 import cn.hutool.http.HtmlUtil;
 import cn.hutool.json.JSONUtil;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.ReadListener;
@@ -24,7 +23,6 @@ import java.util.Map.Entry;
  * @date 2022/3/27
  * @description 抵御xss攻击的wrapper类
  */
-@Component
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     /**
      * Constructs a request object wrapping the given request.
