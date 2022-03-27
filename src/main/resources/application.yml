@@ -1,1 +1,49 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    threads:
+      max: 200
+      min-spare: 30
+    connection-timeout: 5000ms
+  port: 8080
+  servlet:
+    context-path: /emos-wx-api
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://1.117.145.83:3306/emos?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: ENC(MzEZ6l6yxpt7IgraaTu5PO7lVaogaW7qCRKLUMvdiIRp/a94pUadylohPujcBrPJ)
+      initial-size: 8
+      max-active: 16
+      min-idle: 8
+      max-wait: 60000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+  redis:
+    database: 0
+    host: 1.117.145.83
+    port: 6379
+    password: ENC(MzEZ6l6yxpt7IgraaTu5PO7lVaogaW7qCRKLUMvdiIRp/a94pUadylohPujcBrPJ)
+    jedis:
+      pool:
+        max-active: 1000
+        max-wait: -1ms
+        max-idle: 16
+        min-idle: 8
+  data:
+    mongodb:
+      host: 1.117.145.83
+      port: 27017
+      database: emos
+      authentication-database: admin
+      username: root
+      password: ENC(abzK32xjHhciUpEI4+oqp3y07hpDQpEFa51MmFDE/9rUgmxQkcKVMJApWqpaU6CC)
+
+
+
 
