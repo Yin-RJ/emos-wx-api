@@ -10,6 +10,8 @@ server:
     context-path: /emos-wx-api
 
 spring:
+  application:
+    name: emos-wx-api
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -43,6 +45,18 @@ spring:
       authentication-database: admin
       username: root
       password: ENC(abzK32xjHhciUpEI4+oqp3y07hpDQpEFa51MmFDE/9rUgmxQkcKVMJApWqpaU6CC)
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.yinrj.emoswxapi.db.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    root: info
+    com.yinrj.emoswxapi.db.dao: warn
 
 
 
