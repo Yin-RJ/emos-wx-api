@@ -58,6 +58,14 @@ logging:
     root: info
     com.yinrj.emoswxapi.db.dao: warn
 
+emos:
+  jwt:
+    secret: aabbcc123456
+    # 过期时间（天）
+    expire: 5
+    # 令牌缓存时间（天）
+    cache-expire: 10
+
 
 
 
