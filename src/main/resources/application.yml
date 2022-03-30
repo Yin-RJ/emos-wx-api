@@ -65,6 +65,12 @@ emos:
     expire: 5
     # 令牌缓存时间（天）
     cache-expire: 10
+  http-url:
+    wx-openid: https://api.weixin.qq.com/sns/jscode2session
+  wx:
+    app:
+      app-id: ENC(Wok5ouo1/RmAaHW8VObL+N8OmxkAvIqb+OtSyFlySI5riM4kpyA+BBmB8Abcdj5cv+YY0rIxRlJIiyxiz2jSyg==)
+      app-secret: ENC(S0sgzB0l+ORhTctMEJbkLt6NHB0HU/eQNxELjdIA0utMBMbQYqTuFNbO9eYwSg4Bs1XqdEneTCukfnMMv/U+Qfmteh3cGDJhQ0odnisRkDE=)
 
 
 

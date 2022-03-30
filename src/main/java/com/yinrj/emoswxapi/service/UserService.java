@@ -1,0 +1,19 @@
+package com.yinrj.emoswxapi.service;
+
+/**
+ * @author yinrongjie
+ * @version 1.0
+ * @date 2022/3/30
+ * @description 用户服务
+ */
+public interface UserService {
+    /**
+     * 注册用户
+     * @param registerCode 注册码
+     * @param code 小程序传的临时授权字符串
+     * @param nickname 微信昵称
+     * @param photo 微信头像
+     * @return 插入数据的主键
+     */
+    int registerUser(String registerCode, String code, String nickname, String photo);
+}
