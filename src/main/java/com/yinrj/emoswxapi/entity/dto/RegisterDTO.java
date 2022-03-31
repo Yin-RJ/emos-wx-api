@@ -1,4 +1,4 @@
-package com.yinrj.emoswxapi.entity.vo;
+package com.yinrj.emoswxapi.entity.dto;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
@@ -14,7 +14,7 @@ import javax.validation.constraints.Pattern;
  */
 @Data
 @ApiModel
-public class RegisterVO {
+public class RegisterDTO {
     @NotBlank(message = "注册码不能为空")
     @Pattern(regexp = "^[0-9]{6}$", message = "注册码必须是6位数字")
     private String registerCode;

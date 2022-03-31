@@ -3,6 +3,8 @@ package com.yinrj.emoswxapi.db.dao;
 import com.yinrj.emoswxapi.db.pojo.TbUser;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Set;
+
 @Mapper
 public interface TbUserDao {
     /**
@@ -24,4 +26,11 @@ public interface TbUserDao {
      * @return 主键id
      */
     int searchIdByOpenId(String openId);
+
+    /**
+     * 根据userid查询用户的权限
+     * @param userId userid
+     * @return 该用户的权限
+     */
+    Set<String> searchUserPermissions(int userId);
 }

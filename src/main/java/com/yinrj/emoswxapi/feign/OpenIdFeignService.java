@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "get-open-id", url = "${emos.http-url.wx-openid}")
 public interface OpenIdFeignService {
     /**
-     * 获取openid
-     * @param request 请求参数
-     * @return 返回的openid
+     * 获取用户的openid
+     * @param appid 小程序的appid
+     * @param secret 小程序的密钥
+     * @param code 临时授权字符串
+     * @param grantType 固定值
+     * @return openid
      */
     @GetMapping
     String getOpenId(@RequestParam("appid") String appid, @RequestParam("secret") String secret, @RequestParam(

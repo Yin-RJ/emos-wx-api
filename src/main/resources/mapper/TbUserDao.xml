@@ -36,9 +36,9 @@
         </if>
         role = #{role},
         root = #{root},
-<!--        <if test="deptName!=null">-->
-<!--            dept_id = ( SELECT id FROM tb_dept WHERE dept_name = #{deptName} ),-->
-<!--        </if>-->
+        <!--        <if test="deptName!=null">-->
+        <!--            dept_id = ( SELECT id FROM tb_dept WHERE dept_name = #{deptName} ),-->
+        <!--        </if>-->
         status = #{status},
         create_time = #{createTime}
     </insert>
@@ -49,5 +49,15 @@
         WHERE open_id = #{openId}
           AND status = 1
     </select>
+
+    <select id="searchUserPermissions" parameterType="int" resultType="String">
+        SELECT DISTINCT p.permission_name
+        FROM tb_user u
+                 JOIN tb_role r ON JSON_CONTAINS(u.role, CAST(r.id AS CHAR))
+                 JOIN tb_permission p ON JSON_CONTAINS(r.permissions, CAST(p.id AS CHAR))
+        WHERE u.id = #{userId}
+          AND u.status = 1;
+    </select>
+
 
 </mapper>

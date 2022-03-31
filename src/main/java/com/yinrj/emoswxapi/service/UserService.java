@@ -1,5 +1,7 @@
 package com.yinrj.emoswxapi.service;
 
+import java.util.Set;
+
 /**
  * @author yinrongjie
  * @version 1.0
@@ -16,4 +18,11 @@ public interface UserService {
      * @return 插入数据的主键
      */
     int registerUser(String registerCode, String code, String nickname, String photo);
+
+    /**
+     * 获取用户的权限
+     * @param userId 用户id
+     * @return 用户的权限
+     */
+    Set<String> getUserPermissions(int userId);
 }

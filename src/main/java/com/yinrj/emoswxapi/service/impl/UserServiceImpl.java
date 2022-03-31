@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Set;
 
 /**
  * @author yinrongjie
@@ -74,7 +75,9 @@ public class UserServiceImpl implements UserService {
                 user.setOpenId(openId);
                 user.setCreateTime(DateUtil.date());
                 user.setRole(ROOT_ROLE);
-                return userDao.insert(user);
+                // 语句返回的是影响的条数，会将自动生成的主键置入传入的类中
+                userDao.insert(user);
+                return user.getId();
             } else {
                 //如果root已经绑定了，就抛出异常
                 throw new EmosException("无法绑定超级管理员账号");
@@ -84,5 +87,10 @@ public class UserServiceImpl implements UserService {
         else{
             return 0;
         }
+    }
+
+    @Override
+    public Set<String> getUserPermissions(int userId) {
+        return userDao.searchUserPermissions(userId);
     }
 }

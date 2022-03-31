@@ -2,7 +2,7 @@ package com.yinrj.emoswxapi.controller;
 
 import com.yinrj.emoswxapi.common.response.Result;
 import com.yinrj.emoswxapi.common.util.JwtUtil;
-import com.yinrj.emoswxapi.entity.vo.RegisterVO;
+import com.yinrj.emoswxapi.entity.dto.RegisterDTO;
 import com.yinrj.emoswxapi.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -43,11 +44,12 @@ public class UserController {
 
     @PostMapping("/register")
     @ApiOperation("注册用户")
-    public Result register(@Valid @RequestBody RegisterVO registerVO) {
-        int userId = userService.registerUser(registerVO.getRegisterCode(), registerVO.getCode(),
-                registerVO.getNickname(), registerVO.getPhoto());
+    public Result register(@Valid @RequestBody RegisterDTO registerDTO) {
+        int userId = userService.registerUser(registerDTO.getRegisterCode(), registerDTO.getCode(),
+                registerDTO.getNickname(), registerDTO.getPhoto());
+        Set<String> userPermissions = userService.getUserPermissions(userId);
         String token = jwtUtil.createToken(userId);
         redisTemplate.opsForValue().set(token, userId + "", cacheExpire, TimeUnit.DAYS);
-        return Result.ok("用户注册成功").put("token", token);
+        return Result.ok("用户注册成功").put("token", token).put("permissions", userPermissions);
     }
 }
