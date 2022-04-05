@@ -23,9 +23,9 @@ public interface TbUserDao {
     /**
      * 通过openid查询对应用户的主键id
      * @param openId openid
-     * @return 主键id
+     * @return 主键id，没有则返回null
      */
-    int searchIdByOpenId(String openId);
+    Integer searchIdByOpenId(String openId);
 
     /**
      * 根据userid查询用户的权限

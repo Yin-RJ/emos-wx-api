@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         String openId = openIdService.getUserOpenId(request);
 
         if (openId == null) {
-            throw new EmosException("openId为空，注册失败");
+            throw new EmosException("openId为空");
         }
         return openId;
     }
@@ -92,5 +92,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public Set<String> getUserPermissions(int userId) {
         return userDao.searchUserPermissions(userId);
+    }
+
+    @Override
+    public Integer login(String code) {
+        String openId = getOpenId(code);
+        Integer userId = userDao.searchIdByOpenId(openId);
+        if (userId == null) {
+            throw new EmosException("用户不存在");
+        }
+        return userId;
     }
 }

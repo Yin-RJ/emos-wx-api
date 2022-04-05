@@ -25,4 +25,11 @@ public interface UserService {
      * @return 用户的权限
      */
     Set<String> getUserPermissions(int userId);
+
+    /**
+     * 登录
+     * @param code 临时授权字符串
+     * @return 用户的id
+     */
+    Integer login(String code);
 }
