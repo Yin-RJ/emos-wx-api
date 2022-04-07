@@ -43,7 +43,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
     @Resource
     private JwtUtil jwtUtil;
 
-    @Resource
+    @Resource(name = "common-redis-template")
     private RedisTemplate<String, Object> redisTemplate;
 
     /**

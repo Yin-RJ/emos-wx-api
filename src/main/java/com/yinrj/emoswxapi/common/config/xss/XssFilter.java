@@ -1,8 +1,7 @@
 package com.yinrj.emoswxapi.common.config.xss;
 
-import org.springframework.stereotype.Component;
-
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
@@ -12,7 +11,7 @@ import java.io.IOException;
  * @date 2022/3/27
  * @description 过滤器
  */
-@Component
+@WebFilter(urlPatterns = "/*")
 public class XssFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

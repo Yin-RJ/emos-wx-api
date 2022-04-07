@@ -35,8 +35,8 @@ public class UserController {
     @Resource
     private JwtUtil jwtUtil;
 
-    @Resource
-    private RedisTemplate redisTemplate;
+    @Resource(name = "common-redis-template")
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Resource
     private UserService userService;
