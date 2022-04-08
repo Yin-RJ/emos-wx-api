@@ -1,7 +1,8 @@
 package com.yinrj.emoswxapi.db.pojo;
 
-import java.io.Serializable;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * sys_config
